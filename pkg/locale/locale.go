@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	DefaultLang       = "en"
+	DefaultLang       = "ja"
 	DefaultLocalePath = "locales/"
 )
 
