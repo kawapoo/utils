@@ -13,3 +13,5 @@ require (
 	go.opentelemetry.io/otel v0.15.0 // indirect
 	golang.org/x/text v0.3.7
 )
+
+replace github.com/automuteus/utils/ => github.com/kawapoo/utils/ v0.0.31
