@@ -37,28 +37,28 @@ func TestExtractRoleIDFromText(t *testing.T) {
 	}
 }
 
-func TestExtractUserIDFromMention(t *testing.T) {
-	_, err := ExtractUserIDFromMention("invalid")
+func TestExtractUserIDFromText(t *testing.T) {
+	_, err := ExtractUserIDFromText("invalid")
 	if err == nil {
 		t.Error("Expected error for invalid user ID string")
 	}
 
-	_, err = ExtractUserIDFromMention("<@123>")
+	_, err = ExtractUserIDFromText("<@123>")
 	if err == nil {
 		t.Error("Expected error for invalid user ID string")
 	}
 
-	_, err = ExtractUserIDFromMention("<@141101495071408128")
+	_, err = ExtractUserIDFromText("<@141101495071408128")
 	if err == nil {
 		t.Error("Expected error for invalid user ID string")
 	}
 
-	_, err = ExtractUserIDFromMention("<@-141101495071408128>")
+	_, err = ExtractUserIDFromText("<@-141101495071408128>")
 	if err == nil {
 		t.Error("Expected error for invalid user ID string")
 	}
 
-	id, err := ExtractUserIDFromMention("<@141101495071408128>")
+	id, err := ExtractUserIDFromText("<@141101495071408128>")
 	if err != nil {
 		t.Error("Expected nil error from valid Role ID string <@141101495071408128>")
 	}
@@ -66,7 +66,7 @@ func TestExtractUserIDFromMention(t *testing.T) {
 		t.Error("ID was not extracted correctly")
 	}
 
-	id, err = ExtractUserIDFromMention("<@!141101495071408128>")
+	id, err = ExtractUserIDFromText("<@!141101495071408128>")
 	if err != nil {
 		t.Error("Expected nil error from valid Role ID string <@!141101495071408128>")
 	}
@@ -76,29 +76,24 @@ func TestExtractUserIDFromMention(t *testing.T) {
 }
 
 func TestExtractChannelIDFromMention(t *testing.T) {
-	_, err := ExtractChannelIDFromMention("invalid")
+	_, err := ExtractChannelIDFromText("invalid")
 	if err == nil {
 		t.Error("Expected error for invalid channel ID string")
 	}
 
-	_, err = ExtractChannelIDFromMention("<#123>")
+	_, err = ExtractChannelIDFromText("<#123>")
 	if err == nil {
 		t.Error("Expected error for invalid channel ID string")
 	}
 
-	_, err = ExtractChannelIDFromMention("<#141101495071408128")
+	_, err = ExtractChannelIDFromText("<#141101495071408128")
 	if err == nil {
 		t.Error("Expected error for invalid channel ID string")
 	}
 
-	_, err = ExtractChannelIDFromMention("<#-141101495071408128>")
-	if err == nil {
-		t.Error("Expected error for invalid channel ID string")
-	}
-
-	id, err := ExtractChannelIDFromMention("<#141101495071408128>")
+	id, err := ExtractChannelIDFromText("<#141101495071408128>")
 	if err != nil {
-		t.Error("Expected nil error from valid Channel ID string <#141101495071408128>")
+		t.Error("Expected nil error from valid channel ID string <#141101495071408128>")
 	}
 	if id != "141101495071408128" {
 		t.Error("ID was not extracted correctly")
